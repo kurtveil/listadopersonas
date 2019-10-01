@@ -1,3 +1,5 @@
+import { PersonaService } from './persona.service';
+import { LoginService } from './loginService';
 import { Component } from '@angular/core';
 import { Persona } from './persona.model';
 @Component({
@@ -7,10 +9,17 @@ import { Persona } from './persona.model';
 })
 export class AppComponent {
   title = 'listado personas';
-  personas: Persona[] = [new Persona('Kurt', 'Rodriguez'), new Persona('laura', 'camila')];
+  personas: Persona[] = [];
+
+  constructor(
+    private loginService: LoginService,
+    private personaService: PersonaService) {
+  }
 
 onPersonaAgregada(persona: Persona) {
-  this.personas.push(persona);
+  // this.loginService.enviamensajeaconsola(' agregamos al arreglo la nueva persona ' + persona.apellido);
+  // this.personas.push(persona);
+  this.personaService.agregarPersona(persona);
 }
 
 }
