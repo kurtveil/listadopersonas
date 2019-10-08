@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { PersonaService } from './../persona.service';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
-import { LoginService } from '../loginService';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-formulario',
@@ -9,18 +10,26 @@ import { LoginService } from '../loginService';
 })
 export class FormularioComponent implements OnInit {
   @Output() personaCreada = new EventEmitter<Persona>();
-  @ViewChild('nombreInput') nombreInput: ElementRef;
-  @ViewChild('apellidoInput') apellidoInput: ElementRef;
-  // nombreInput: string;
-  // apellidoInput: string;
 
-  constructor(private loginservice: LoginService ) { }
+  @ViewChild('nombreInput', {static: false}) nombreInput: ElementRef;
+  @ViewChild('apellidoInput', {static: false}) apellidoInput: ElementRef;
+
+
+  constructor(
+    private loginservice: LoginService,
+    private personaService: PersonaService) {
+
+    this.personaService.saludar.subscribe(
+      (indice: number) => alert('El indice es ' + indice)
+    );
+  }
 
   ngOnInit() {
   }
   onAgregarPersona() {
     const persona1 = new Persona(this.nombreInput.nativeElement.value, this.apellidoInput.nativeElement.value);
-    this.loginservice.enviamensajeaconsola(' enviamos persona ' + persona1.nombre + ' apellido: ' + persona1.apellido);
-    this.personaCreada.emit(persona1);
+    // this.loginservice.enviamensajeaconsola(' enviamos persona ' + persona1.nombre + ' apellido: ' + persona1.apellido);
+    // this.personaCreada.emit(persona1);
+    this.personaService.agregarPersona(persona1);
   }
 }

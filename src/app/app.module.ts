@@ -1,3 +1,4 @@
+import { PersonaService } from './persona.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -5,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PersonaComponent } from './persona/persona.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { LoginService } from './loginService';
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { LoginService } from './loginService';
     BrowserModule,
     FormsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, PersonaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

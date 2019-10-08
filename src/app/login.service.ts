@@ -1,5 +1,5 @@
 export class LoginService {
-    enviamensajeaconsola(mensaje: string) {
+    enviaMensajeAconsola(mensaje: string) {
         console.log(mensaje);
     }
 }
