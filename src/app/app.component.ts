@@ -9,7 +9,7 @@ import { Persona } from './persona.model';
 })
 export class AppComponent implements OnInit {
 
-  title = 'listado personas';
+  title = 'Listado Personas';
   personas: Persona[] = [];
 
   constructor(
@@ -20,10 +20,5 @@ export class AppComponent implements OnInit {
     this.personas = this.personaService.personas;
   }
 
-  // onPersonaAgregada(persona: Persona) {
-  //   // this.loginService.enviamensajeaconsola(' agregamos al arreglo la nueva persona ' + persona.apellido);
-  //   // this.personas.push(persona);
-  //   this.personaService.agregarPersona(persona);
-  // }
 
 }
