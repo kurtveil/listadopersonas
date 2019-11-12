@@ -1,6 +1,7 @@
 import { Persona } from './persona.model';
 import { LoginService } from './login.service';
 import { Injectable, EventEmitter } from '@angular/core';
+import { DataServices } from './data.services';
 
 
 @Injectable()
@@ -11,12 +12,16 @@ export class PersonaService {
   ];
 
   saludar = new EventEmitter<number>();
-  constructor(private loginService: LoginService) {
+  constructor(
+    private loginService: LoginService,
+    private dataService: DataServices,
+    ) {
 
   }
   agregarPersona(persona: Persona) {
     this.loginService.enviaMensajeAconsola('agregar persona ' + persona.nombre);
     this.personas.push(persona);
+    this.dataService.guardarPersona(this.personas);
   }
 
   encontrarPersona(index: number) {
@@ -31,5 +36,8 @@ export class PersonaService {
 
   eliminarPersona(index: number) {
     this.personas.splice(index, 1);
+  }
+  obtenerPersonas() {
+    return this.dataService.cargarPersonas();
   }
 }
