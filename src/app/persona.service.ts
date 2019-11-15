@@ -1,5 +1,5 @@
 import { Persona } from './persona.model';
-import { LoginService } from './login.service';
+import { LogginService } from './loggin.service';
 import { Injectable, EventEmitter } from '@angular/core';
 import { DataServices } from './data.services';
 
@@ -10,7 +10,7 @@ export class PersonaService {
 
   saludar = new EventEmitter<number>();
   constructor(
-    private loginService: LoginService,
+    private loginService: LogginService,
     private dataService: DataServices,
   ) {
 

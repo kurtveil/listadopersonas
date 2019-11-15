@@ -1,9 +1,11 @@
-import { ErrorComponent } from './personas/error/error.component';
-import { FormularioComponent } from './personas/formulario/formulario.component';
-import { PersonasComponent } from './personas/personas.component';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+// componentes
+import { PersonasComponent } from './personas/personas.component';
+import { FormularioComponent } from './personas/formulario/formulario.component';
+import { ErrorComponent } from './personas/error/error.component';
+import { NgModule } from '@angular/core';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: PersonasComponent },
@@ -15,6 +17,7 @@ const routes: Routes = [
       { path: ':id', component: FormularioComponent }
     ]
   },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: ErrorComponent }
 ];
 

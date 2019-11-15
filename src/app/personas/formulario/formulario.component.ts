@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Persona } from '../../persona.model';
 import { PersonaService } from '../../persona.service';
-import { LoginService } from '../../login.service';
+import { LogginService } from '../../loggin.service';
 
 @Component({
   selector: 'app-formulario',
@@ -16,7 +16,7 @@ export class FormularioComponent implements OnInit {
   modoEdicion: number;
 
   constructor(
-    private loginservice: LoginService,
+    private loginservice: LogginService,
     private personaService: PersonaService,
     private router: Router,
     private route: ActivatedRoute

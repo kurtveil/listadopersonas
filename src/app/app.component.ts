@@ -1,5 +1,4 @@
-import { PersonaService } from './persona.service';
-import { LoginService } from './login.service';
+import * as firebase from 'firebase';
 import { Component, OnInit } from '@angular/core';
 import { Persona } from './persona.model';
 @Component({
@@ -8,16 +7,15 @@ import { Persona } from './persona.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   title = 'Listado Personas';
-  personas: Persona[] = [];
-
   constructor(
-    private loginService: LoginService,
-    private personaService: PersonaService) {
+  ) {
   }
   ngOnInit(): void {
-    this.personas = this.personaService.personas;
+    firebase.initializeApp({
+      apiKey: 'AIzaSyBjxHXszSZFlG5bHA9YYoZkgswRn8B8tKY',
+      authDomain: 'listado-personas-689b8.firebaseapp.com',
+    });
   }
 
 
