@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 export class LoginService {
     token: string;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router) { }
 
     login(email: string, password: string) {
         firebase.auth().signInWithEmailAndPassword(email, password).then(
@@ -23,5 +23,16 @@ export class LoginService {
 
     getIdToken() {
         return this.token;
+    }
+
+    isAutenticated() {
+        return this.token != null;
+    }
+    logout() {
+        firebase.auth().signOut().then(() => {
+            this.token = null;
+            this.router.navigate(['login']);
+        }
+        ).catch(error => console.log('error logout:' + error));
     }
 }

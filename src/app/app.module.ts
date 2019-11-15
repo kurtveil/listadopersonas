@@ -15,6 +15,7 @@ import { FormularioComponent } from './personas/formulario/formulario.component'
 import { PersonasComponent } from './personas/personas.component';
 import { ErrorComponent } from './personas/error/error.component';
 import { LoginComponent } from './login/login.component';
+import { LoginGuard } from './login/login.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LogginService, PersonaService, DataServices, LoginService],
+  providers: [LogginService, PersonaService, DataServices, LoginService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
