@@ -17,4 +17,23 @@ export class DataServices {
         error => console.log('error al guardar persona: ' + error),
       );
   }
+  modificarPersona(index: number, persona: Persona) {
+    let url: string;
+    url = 'https://listado-personas-689b8.firebaseio.com/datos/' + index + '.json';
+    this.httpClient.put(url, persona)
+      .subscribe(
+        response => console.log('resultado modificacr personsa:' + response)
+        , error => console.log('error en modificar persona:' + error)
+      );
+  }
+  eliminarPersona(index: number) {
+    let url: string;
+    url = 'https://listado-personas-689b8.firebaseio.com/datos/' + index + '.json';
+    this.httpClient.delete(url)
+      .subscribe(
+        response => console.log('resultado eliminar personsa:' + response)
+        , error => console.log('error en eliminar persona:' + error)
+      );
+  }
 }
+
