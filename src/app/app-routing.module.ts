@@ -9,10 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './login/login.guard';
 
 const routes: Routes = [
-  { path: '', component: PersonasComponent, canActivate:[LoginGuard] },
+  { path: '', component: PersonasComponent, canActivate: [LoginGuard] },
   {
     path: 'personas',
-    component: PersonasComponent, canActivate:[LoginGuard],
+    component: PersonasComponent, canActivate: [LoginGuard],
     children: [
       { path: 'agregar', component: FormularioComponent },
       { path: ':id', component: FormularioComponent }
